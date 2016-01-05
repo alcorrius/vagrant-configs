@@ -67,43 +67,43 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
     config.vm.provision "shell", inline: <<-SHELL
-        sudo su
-          apt-get update
-          apt-get install -y apache2
-          apt-get install -y php5 php5-dev php-pear libapache2-mod-php5
-
-          a2enmod rewrite
-
-          apt-get install -y libaio1
-
-          apt-get install -y alien
-          cd /home/share
-          alien -i oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm
-          alien -i oracle-instantclient11.2-sqlplus-11.2.0.4.0-1.x86_64.rpm
-          alien -i oracle-instantclient11.2-devel-11.2.0.4.0-1.x86_64.rpm
-
-          echo "/usr/lib/oracle/11.2/client64/lib" >> /etc/ld.so.conf.d/oracle.conf
-          chmod o+r /etc/ld.so.conf.d/oracle.conf
-          ldconfig
-
-          echo "export ORACLE_HOME=/usr/lib/oracle/11.2/client64" >> /etc/profile.d/oracle.sh
-          echo "export PATH=$PATH:$ORACLE_HOME/bin" >> /etc/profile.d/oracle.sh
-          chmod o+r /etc/profile.d/oracle.sh
-
-          echo "instantclient,/usr/lib/oracle/11.2/client64/lib" | pecl install oci8-2.0.8
-
-          echo "extension=oci8.so" >> /etc/php5/mods-available/oci8.ini
-          php5enmod oci8
-
-          echo "include_path = .:/usr/share/php:/home/share/ZendFramework-1.11.11:/home/share/PHPExcel-1.7.6" >> /etc/php5/apache2/php.ini
-          cp /home/share/aistcv.local.conf /etc/apache2/sites-available/
-          a2dissite 000-default
-          a2ensite aistcv.local
-
-          service apache2 restart
-          usermod -a -G vagrant www-data
-          #chmod 777 /var/www/data/logs/development.log
-          #chmod 777 /var/www/data/logs/production.log
-
+	sudo su
+        apt-get update
+        apt-get install -y apache2
+        apt-get install -y php5 php5-dev php-pear libapache2-mod-php5
+        
+        a2enmod rewrite
+        
+        apt-get install -y libaio1
+        
+        apt-get install -y alien
+        cd /home/share
+        alien -i oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm
+        alien -i oracle-instantclient11.2-sqlplus-11.2.0.4.0-1.x86_64.rpm
+        alien -i oracle-instantclient11.2-devel-11.2.0.4.0-1.x86_64.rpm
+        
+        echo "/usr/lib/oracle/11.2/client64/lib" >> /etc/ld.so.conf.d/oracle.conf
+        chmod o+r /etc/ld.so.conf.d/oracle.conf
+        ldconfig
+        
+        echo "export ORACLE_HOME=/usr/lib/oracle/11.2/client64" >> /etc/profile.d/oracle.sh
+        echo "export PATH=$PATH:$ORACLE_HOME/bin" >> /etc/profile.d/oracle.sh
+        chmod o+r /etc/profile.d/oracle.sh
+        
+        echo "instantclient,/usr/lib/oracle/11.2/client64/lib" | pecl install oci8-2.0.8
+        
+        echo "extension=oci8.so" >> /etc/php5/mods-available/oci8.ini
+        php5enmod oci8
+        
+        echo "include_path = .:/usr/share/php:/home/share/ZendFramework-1.11.11:/home/share/PHPExcel-1.7.6" >> /etc/php5/apache2/php.ini
+        cp /home/share/aistcv.local.conf /etc/apache2/sites-available/
+        a2dissite 000-default
+        a2ensite aistcv.local
+        
+        usermod -a -G vagrant www-data
+        service apache2 restart
+        
+        chmod 777 /var/www/data/logs/development.log
+        #chmod 777 /var/www/data/logs/production.log
    SHELL
 end
