@@ -103,7 +103,7 @@ Vagrant.configure(2) do |config|
         usermod -a -G vagrant www-data
         service apache2 restart
         
-        chmod 777 /var/www/data/logs/development.log
+        #chmod 777 /var/www/data/logs/development.log
         #chmod 777 /var/www/data/logs/production.log
    SHELL
 end
