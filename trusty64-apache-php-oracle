@@ -26,6 +26,8 @@ Vagrant.configure(2) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
+  
+  # //change ip to desired
    config.vm.network "private_network", ip: "172.28.128.5"
 
   # Create a public network, which generally matched to bridged network.
@@ -38,6 +40,8 @@ Vagrant.configure(2) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
+  
+  # //configure synced folders for your needs
   config.vm.synced_folder "../aistcv", "/var/www"
   config.vm.synced_folder "../share", "/home/share"
 
@@ -71,12 +75,14 @@ Vagrant.configure(2) do |config|
         apt-get update
         apt-get install -y apache2
         apt-get install -y php5 php5-dev php-pear libapache2-mod-php5
+        apt-get install -y php5-xdebug
         
         a2enmod rewrite
         
         apt-get install -y libaio1
         
         apt-get install -y alien
+        # //path to mounted folder with oracle libs
         cd /home/share
         alien -i oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm
         alien -i oracle-instantclient11.2-sqlplus-11.2.0.4.0-1.x86_64.rpm
@@ -95,10 +101,13 @@ Vagrant.configure(2) do |config|
         echo "extension=oci8.so" >> /etc/php5/mods-available/oci8.ini
         php5enmod oci8
         
+        # //path to mounted folder with php libs and apache files
         echo "include_path = .:/usr/share/php:/home/share/ZendFramework-1.11.11:/home/share/PHPExcel-1.7.6" >> /etc/php5/apache2/php.ini
         cp /home/share/aistcv.local.conf /etc/apache2/sites-available/
         a2dissite 000-default
         a2ensite aistcv.local
+        
+        cp /home/share/xdebug.ini /etc/php5/mods-available/xdebug.ini
         
         usermod -a -G vagrant www-data
         service apache2 restart
