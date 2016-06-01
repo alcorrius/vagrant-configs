@@ -75,6 +75,7 @@ Vagrant.configure(2) do |config|
         apt-get update
         apt-get install -y apache2
         apt-get install -y php5 php5-dev php-pear libapache2-mod-php5
+        apt-get install -y php5-xdebug
         
         a2enmod rewrite
         
@@ -105,6 +106,8 @@ Vagrant.configure(2) do |config|
         cp /home/share/aistcv.local.conf /etc/apache2/sites-available/
         a2dissite 000-default
         a2ensite aistcv.local
+        
+        cp /home/share/xdebug.ini /etc/php5/mods-available/xdebug.ini
         
         usermod -a -G vagrant www-data
         service apache2 restart
