@@ -1,7 +1,7 @@
 # Vagrant-configs
 Configs for vagrant
 
-## Manual
+## Instructions
 ###1. Install Vagrant:
   sudo apt-get install vagrant
 
