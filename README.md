@@ -19,4 +19,4 @@ Configs for vagrant
 ###5. Start virtual machine:
   PHPStorm->Tools->Vagrant->Up
   
-###6. Check for errors in PHPStorm command line. If needed start ssh session in PHPStorm and manually fix problems/.
+###6. Check for errors in PHPStorm command line. If needed start ssh session in PHPStorm and manually fix problems.
