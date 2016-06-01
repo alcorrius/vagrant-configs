@@ -14,7 +14,7 @@ Configs for vagrant
   - Change IP address
   - Configure synced folders
   - Download Oracle libraries and put them into the synced folder
-  - Created apache virtualhost config file and put it into the synced fodler
+  - Create apache virtualhost config file and put it into the synced folder
 
 ###5. Start virtual machine:
   PHPStorm->Tools->Vagrant->Up
