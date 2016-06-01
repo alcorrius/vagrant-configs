@@ -81,6 +81,7 @@ Vagrant.configure(2) do |config|
         apt-get install -y libaio1
         
         apt-get install -y alien
+        # //path to mounted folder with oracle libs
         cd /home/share
         alien -i oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm
         alien -i oracle-instantclient11.2-sqlplus-11.2.0.4.0-1.x86_64.rpm
@@ -99,6 +100,7 @@ Vagrant.configure(2) do |config|
         echo "extension=oci8.so" >> /etc/php5/mods-available/oci8.ini
         php5enmod oci8
         
+        # //path to mounted folder with php libs and apache files
         echo "include_path = .:/usr/share/php:/home/share/ZendFramework-1.11.11:/home/share/PHPExcel-1.7.6" >> /etc/php5/apache2/php.ini
         cp /home/share/aistcv.local.conf /etc/apache2/sites-available/
         a2dissite 000-default
