@@ -1,2 +1,22 @@
-# vagrant-configs
+# Vagrant-configs
 Configs for vagrant
+
+## Manual
+###1. Install Vagrant:
+  sudo apt-get install vagrant
+
+###2. Initialize Vagrant in PHPStorm project:
+  PHPStorm->Tools->Vagrant->Init in Project Root
+
+###3. Replace content of Vagrantfile by downloaded config file
+
+###4. Set config parameters:
+  - Change IP address
+  - Configure synced folders
+  - Download Oracle libraries and put them into the synced folder
+  - Created apache virtualhost config file and put it into the synced fodler
+
+###5. Start virtual machine:
+  PHPStorm->Tools->Vagrant->Up
+  
+###6. Check for errors in PHPStorm command line. If needed start ssh session in PHPStorm and manually fix problems/.
