@@ -2,7 +2,8 @@
 Configs for vagrant
 
 ## Instructions
-###1. Install Vagrant:
+###1. Install Vagrant and VirtualBox:
+  sudo apt-get install virtualbox
   sudo apt-get install vagrant
 
 ###2. Initialize Vagrant in PHPStorm project:
